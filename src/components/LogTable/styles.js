@@ -21,6 +21,6 @@ export const TableRow = styled.tr`
   border-bottom: 1px solid #e3e3e3;
 `;
 
-export const TableHader = styled.thead``;
+export const TableHeader = styled.thead``;
 
 export const Body = styled.tbody``;

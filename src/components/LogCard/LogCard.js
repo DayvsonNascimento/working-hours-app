@@ -17,6 +17,7 @@ const LogCard = () => {
   return (
     <Container>
       <RowCell>1 Jul, Thu</RowCell>
+
       <RowCell>
         <HourInput
           labels={['Arriving', 'Exiting']}
@@ -29,7 +30,9 @@ const LogCard = () => {
           setHoursRange={setHoursRangeLunch}
         />
       </RowCell>
+
       <RowCell>24hrs</RowCell>
+
       <RowCell>Sample comment</RowCell>
     </Container>
   );

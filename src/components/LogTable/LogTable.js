@@ -21,6 +21,7 @@ const LogTable = () => {
             <HeaderCell>Comment</HeaderCell>
           </TableRow>
         </TableHeader>
+
         <Body>
           <LogCard />
           <LogCard />
