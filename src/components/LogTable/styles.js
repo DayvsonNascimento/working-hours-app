@@ -10,10 +10,11 @@ export const Table = styled.table`
 `;
 
 export const HeaderCell = styled.th`
-  padding: 8px;
+  padding: 16px 8px 16px 8px;
   font-size: 16px;
   font-weight: 400;
   text-align: left;
+  width: 25%;
 `;
 
 export const TableHeader = styled.tr`

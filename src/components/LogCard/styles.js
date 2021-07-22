@@ -10,4 +10,5 @@ export const RowCell = styled.td`
   padding: 8px;
   font-size: 14px;
   border-bottom: 1px solid #e3e3e3;
+  color: #737373;
 `;

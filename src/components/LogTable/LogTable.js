@@ -14,6 +14,8 @@ const LogTable = () => {
         </TableHeader>
         <Body>
           <LogCard />
+          <LogCard />
+          <LogCard />
         </Body>
       </Table>
     </Container>
