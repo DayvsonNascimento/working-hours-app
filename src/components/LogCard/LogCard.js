@@ -7,8 +7,8 @@ const LogCard = () => {
     <Container>
       <RowCell>1 Jul, Thu</RowCell>
       <RowCell>
-        <HourInput label="Start - End" />
-        <HourInput label="Lunch" />
+        <HourInput labels={['Arriving', 'Exiting']} />
+        <HourInput labels={['Lunch start', 'Lunch end']} />
       </RowCell>
       <RowCell>24hrs</RowCell>
       <RowCell>Sample comment</RowCell>

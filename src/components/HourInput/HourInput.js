@@ -1,11 +1,14 @@
 import { Container, InputLabel, InputContainer, Input } from './styles';
 
-const HourInput = ({ label }) => {
+const HourInput = ({ labels }) => {
   return (
     <Container>
-      <InputLabel>{label}</InputLabel>
       <InputContainer>
+        <InputLabel>{labels[0]}</InputLabel>
         <Input type="time" />
+      </InputContainer>
+      <InputContainer>
+        <InputLabel>{labels[1]}</InputLabel>
         <Input type="time" />
       </InputContainer>
     </Container>
