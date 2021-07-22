@@ -16,3 +16,14 @@ input[type='time']::-webkit-calendar-picker-indicator {
   background: none;
   display: none;
 }
+
+input:focus,
+textarea:focus {
+  outline: none !important;
+  border-color: rgb(29, 161, 242);
+  box-shadow: 0 0 5px rgb(29, 161, 242);
+}
+
+input:hover {
+  border-color: rgb(29, 161, 242);
+}
