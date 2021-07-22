@@ -17,8 +17,10 @@ export const HeaderCell = styled.th`
   width: 25%;
 `;
 
-export const TableHeader = styled.tr`
+export const TableRow = styled.tr`
   border-bottom: 1px solid #e3e3e3;
 `;
+
+export const TableHader = styled.thead``;
 
 export const Body = styled.tbody``;
