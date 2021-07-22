@@ -1,15 +1,15 @@
-import { Container, InputLabel, InputContainer } from '../LogCard/styles';
+import { Container, InputLabel, InputContainer, Input } from './styles';
 
-const HourInputForm = ({ label }) => {
+const HourInput = ({ label }) => {
   return (
     <Container>
       <InputLabel>{label}</InputLabel>
       <InputContainer>
-        <HourInput type="time" />
-        <HourInput type="time" />
+        <Input type="time" />
+        <Input type="time" />
       </InputContainer>
     </Container>
   );
 };
 
-export default HourInputForm;
+export default HourInput;
