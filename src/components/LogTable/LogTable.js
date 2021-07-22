@@ -1,3 +1,5 @@
+import LogCard from '../LogCard/LogCard';
+
 import { Container, Table, TableHeader, HeaderCell, Body } from './styles';
 
 const LogTable = () => {
@@ -10,7 +12,9 @@ const LogTable = () => {
           <HeaderCell>Total</HeaderCell>
           <HeaderCell>Comment</HeaderCell>
         </TableHeader>
-        <Body></Body>
+        <Body>
+          <LogCard />
+        </Body>
       </Table>
     </Container>
   );
