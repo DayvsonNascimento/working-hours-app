@@ -1,11 +1,11 @@
-import LogTable from './components/LogTable/LogTable';
 import Navbar from './components/Navbar/Navbar';
+import HomePage from './pages/HomePage/HomePage';
 
 function App() {
   return (
     <>
       <Navbar />
-      <LogTable />
+      <HomePage />
     </>
   );
 }

@@ -2,6 +2,10 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   padding: 24px;
+  background-color: #ffffff;
+  box-shadow: 0 1px 1px 1px #e3e3e3;
+  border-radius: 5px;
+  float: left;
 `;
 
 export const Table = styled.table`
