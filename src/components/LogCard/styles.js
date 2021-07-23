@@ -19,7 +19,7 @@ export const RowCell = styled.td`
 export const ButtonContainer = styled.td`
   position: absolute;
   bottom: 0;
-  right: 5px;
+  right: 10px;
   margin-bottom: 15px
 `;
 
