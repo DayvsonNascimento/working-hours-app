@@ -6,6 +6,7 @@ export const Container = styled.div`
   box-shadow: 0 1px 1px 1px #e3e3e3;
   border-radius: 5px;
   float: left;
+  width: 75%;
 `;
 
 export const Table = styled.table`
