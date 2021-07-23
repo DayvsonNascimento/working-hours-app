@@ -1,8 +1,8 @@
 import { Container, InputLabel, InputContainer, Input } from './styles';
 
 const HourInput = ({ labels, hoursRange, setHoursRange }) => {
-  const handleHourChange = (event) => {
-    setHoursRange(event.target.value);
+  const handleInputChange = (event, property) => {
+    setHoursRange({ ...hoursRange, [property]: event.target.value });
   };
 
   return (
@@ -12,16 +12,17 @@ const HourInput = ({ labels, hoursRange, setHoursRange }) => {
         <Input
           type="time"
           value={hoursRange.start}
-          onChange={handleHourChange}
+          onChange={(event) => handleInputChange(event, 'start')}
         />
       </InputContainer>
 
       <InputContainer>
         <InputLabel>{labels[1]}</InputLabel>
-        <Input 
-          type="time" 
+        <Input
+          type="time"
           value={hoursRange.end}
-          onChange={handleHourChange} />
+          onChange={(event) => handleInputChange(event, 'end')}
+        />
       </InputContainer>
     </Container>
   );
