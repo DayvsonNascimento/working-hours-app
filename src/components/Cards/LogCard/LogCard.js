@@ -4,7 +4,7 @@ import { Container, RowCell, ButtonContainer, Button } from './styles';
 
 import HourInput from '../../HourInput/HourInput';
 
-const LogCard = () => {
+const LogCard = ({ day }) => {
   const [hoursRangeWork, setHoursRangeWork] = useState({
     start: '',
     end: '',
@@ -18,9 +18,13 @@ const LogCard = () => {
     return Object.values(object).every((el) => el === '');
   };
 
+  const getFormatedDate = () => {
+    return `${day.date.format('D')} ${day.date.format('MMM')}, ${day.date.format('ddd')}`
+  }
+
   return (
     <Container>
-      <RowCell>1 Jul, Thu</RowCell>
+      <RowCell>{getFormatedDate()}</RowCell>
 
       <RowCell>
         <HourInput
