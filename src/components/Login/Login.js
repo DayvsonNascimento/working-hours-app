@@ -1,3 +1,5 @@
+import { useHistory } from 'react-router-dom';
+
 import {
   Container,
   Label,
@@ -8,7 +10,13 @@ import {
   Link,
 } from './styles';
 
-const Login = () => {
+const Login = ({ navigation }) => {
+  const history = useHistory();
+
+  const handleLogin = () => {
+    history.push('/');
+  };
+
   return (
     <Container>
       <Title>Login</Title>
@@ -19,7 +27,7 @@ const Login = () => {
       <Label>Password</Label>
       <Input></Input>
 
-      <Button>Log In</Button>
+      <Button onClick={handleLogin}>Log In</Button>
 
       <SignUpText>
         Don't have an account?

@@ -1,9 +1,7 @@
-import Navbar from './components/Navbar/Navbar';
-import HomePage from './pages/HomePage/HomePage';
-import LoginPage from './pages/LoginPage/LoginPage';
+import Routes from './routes/Routes';
 
 function App() {
-  return <LoginPage />;
+  return <Routes />;
 }
 
 export default App;
