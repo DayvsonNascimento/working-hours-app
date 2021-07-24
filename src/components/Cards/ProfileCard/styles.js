@@ -14,7 +14,7 @@ export const Icon = styled(AiOutlineUser)`
   height: 50px;
   border-radius: 100%;
   padding: 8px;
-  background-color: rgba(135, 158, 207, 0.1);
+  background-color: rgba(53, 152, 220, 0.2);
 `;
 
 export const Text = styled.p`

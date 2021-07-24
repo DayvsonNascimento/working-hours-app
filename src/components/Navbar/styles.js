@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { AiOutlineHome } from 'react-icons/ai';
 
 export const Container = styled.div`
-  background: #fff;
+  background: #3598dc;
   z-index: 99;
   padding-left: 30px;
   box-shadow: -5px 3px 14px -9px rgba(0, 0, 0, 0.51);
@@ -21,8 +21,10 @@ export const Icon = styled(AiOutlineHome)`
   border-radius: 100%;
   margin-right: 7px;
   padding: 8px;
-  background-color: rgba(135, 158, 207, 0.1);
+  background-color: rgba(245, 248, 250, 0.3);
 `;
 
 export const Title = styled.p`
-`
+  color: #f5f8fa;
+  font-weight: bold;
+`;

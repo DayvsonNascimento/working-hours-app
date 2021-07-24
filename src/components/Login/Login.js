@@ -10,7 +10,7 @@ import {
   Link,
 } from './styles';
 
-const Login = ({ navigation }) => {
+const Login = () => {
   const history = useHistory();
 
   const handleLogin = () => {
@@ -25,13 +25,13 @@ const Login = ({ navigation }) => {
       <Input></Input>
 
       <Label>Password</Label>
-      <Input></Input>
+      <Input type='password'></Input>
 
       <Button onClick={handleLogin}>Log In</Button>
 
       <SignUpText>
         Don't have an account?
-        <Link href="">Sign up here!</Link>
+        <Link href=""> Sign up here!</Link>
       </SignUpText>
     </Container>
   );
