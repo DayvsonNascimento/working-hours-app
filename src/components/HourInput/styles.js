@@ -20,4 +20,5 @@ export const Input = styled.input`
   border: 1px solid #d4d4d4;
   padding-left: 10px;
   font-family: inherit;
+  cursor: text;
 `;

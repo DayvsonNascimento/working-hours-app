@@ -4,7 +4,7 @@ import { AiOutlineHome } from 'react-icons/ai';
 export const Container = styled.div`
   background: #fff;
   z-index: 99;
-  padding-left: 10px;
+  padding-left: 30px;
   box-shadow: -5px 3px 14px -9px rgba(0, 0, 0, 0.51);
 `;
 

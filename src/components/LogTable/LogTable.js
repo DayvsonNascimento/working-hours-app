@@ -1,4 +1,4 @@
-import LogCard from '../LogCard/LogCard';
+import LogCard from '../Cards/LogCard/LogCard';
 
 import {
   Container,

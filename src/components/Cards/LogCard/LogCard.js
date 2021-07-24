@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import { Container, RowCell, ButtonContainer, Button } from './styles';
 
-import HourInput from '../HourInput/HourInput';
+import HourInput from '../../HourInput/HourInput';
 
 const LogCard = () => {
   const [hoursRangeWork, setHoursRangeWork] = useState({
