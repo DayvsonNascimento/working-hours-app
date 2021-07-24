@@ -42,7 +42,7 @@ export const Button = styled.div`
 `;
 
 export const Title = styled.h2`
-  margin: 10px 0 10px;
+  margin: 10px 0 20px;
 `;
 
 export const SignUpBox = styled.div`
@@ -61,6 +61,4 @@ export const SignUpText = styled.p`
 export const Link = styled.a`
   color: inherit;
   text-decoration: none;
-  cursor: pointer;
-  font-weight: 800;
 `;

@@ -17,6 +17,10 @@ const Login = () => {
     history.push('/');
   };
 
+  const handleSignUpRedirect = () => {
+    history.push('/signup');
+  };
+
   return (
     <Container>
       <Title>Login</Title>
@@ -25,13 +29,13 @@ const Login = () => {
       <Input></Input>
 
       <Label>Password</Label>
-      <Input type='password'></Input>
+      <Input type="password"></Input>
 
       <Button onClick={handleLogin}>Log In</Button>
 
       <SignUpText>
         Don't have an account?
-        <Link href=""> Sign up here!</Link>
+        <Link onClick={handleSignUpRedirect}> Sign up here!</Link>
       </SignUpText>
     </Container>
   );
