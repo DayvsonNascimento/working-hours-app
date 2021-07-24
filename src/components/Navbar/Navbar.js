@@ -1,4 +1,4 @@
-import { Container, Content } from './styles';
+import { Container } from './styles';
 
 import Menu from './Menu/Menu';
 
