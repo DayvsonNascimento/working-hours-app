@@ -24,9 +24,7 @@ const LogCard = ({ day }) => {
   };
 
   const getFormatedDate = () => {
-    return `${day.date.format('D')} ${day.date.format(
-      'MMM'
-    )}, ${day.date.format('ddd')}`;
+    return `${day.date.format('D MMM, ddd')}`
   };
 
   return (
