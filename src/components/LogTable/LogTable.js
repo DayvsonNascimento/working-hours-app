@@ -62,7 +62,7 @@ const LogTable = () => {
     dayjs.extend(weekOfYear);
 
     const now = dayjs();
-    const month = now.format('MMMM');
+    const month = now.format('M');
     const year = now.format('YYYY');
 
     getDaysCurrentMonth(month, year);
@@ -77,7 +77,6 @@ const LogTable = () => {
           <Option value="2021">2021</Option>
           <Option value="2021">2022</Option>
         </Select>
-
         <Select value={currentMonth} onChange={handleMonthChange}>
           {months.map((value, index) => (
             <Option key={index} value={value}>
@@ -86,7 +85,6 @@ const LogTable = () => {
           ))}
         </Select>
       </SelectContainer>
-
       <Table>
         <TableHeader>
           <TableRow>
@@ -95,7 +93,6 @@ const LogTable = () => {
             <HeaderCell>Total</HeaderCell>
           </TableRow>
         </TableHeader>
-
         <Body>
           {daysOfMonth?.map((day, index) => (
             <LogCard key={index} day={day} />

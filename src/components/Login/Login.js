@@ -26,13 +26,12 @@ const Login = () => {
       <Title>Login</Title>
 
       <Label>Email</Label>
-      <Input></Input>
+      <Input type="text"></Input>
 
       <Label>Password</Label>
       <Input type="password"></Input>
 
       <Button onClick={handleLogin}>Log In</Button>
-
       <SignUpText>
         Don't have an account?
         <Link onClick={handleSignUpRedirect}> Sign up here!</Link>

@@ -6,10 +6,10 @@ const SignUp = () => {
       <Title>Create your account</Title>
 
       <Label>Full name</Label>
-      <Input></Input>
+      <Input type="text"></Input>
 
       <Label>Email address</Label>
-      <Input></Input>
+      <Input type="text"></Input>
 
       <Label>Password</Label>
       <Input type="password"></Input>

@@ -14,9 +14,9 @@ const Routes = () => {
         <Navbar />
       )}
       <Switch>
-        <Route exact path="/" component={HomePage}></Route>
         <Route exact path="/login" component={LoginPage}></Route>
         <Route exact path="/signup" component={SignUpPage}></Route>
+        <Route exact path="/" component={HomePage}></Route>
         <Route exact path="*">
           <Redirect to="/login" />
         </Route>

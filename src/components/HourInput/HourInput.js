@@ -15,7 +15,6 @@ const HourInput = ({ labels, hoursRange, setHoursRange }) => {
           onChange={(event) => handleInputChange(event, 'start')}
         />
       </InputContainer>
-
       <InputContainer>
         <InputLabel>{labels[1]}</InputLabel>
         <Input
