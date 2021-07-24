@@ -1,6 +1,11 @@
 import { useState } from 'react';
 
-import { Container, RowCell, ButtonContainer, Button } from './styles';
+import {
+  Container,
+  RowCell,
+  ButtonContainer,
+  Button
+} from './styles';
 
 import HourInput from '../../HourInput/HourInput';
 
@@ -19,8 +24,10 @@ const LogCard = ({ day }) => {
   };
 
   const getFormatedDate = () => {
-    return `${day.date.format('D')} ${day.date.format('MMM')}, ${day.date.format('ddd')}`
-  }
+    return `${day.date.format('D')} ${day.date.format(
+      'MMM'
+    )}, ${day.date.format('ddd')}`;
+  };
 
   return (
     <Container>
@@ -39,15 +46,14 @@ const LogCard = ({ day }) => {
         />
       </RowCell>
 
-      <RowCell>24hrs</RowCell>
-
-      <RowCell>Sample comment</RowCell>
-
-      {!checkForEmptyFields(hoursRangeWork) ? (
-        <ButtonContainer>
-          <Button>Save</Button>
-        </ButtonContainer>
-      ) : null}
+      <RowCell>
+        24hrs
+        {!checkForEmptyFields(hoursRangeWork) ? (
+          <ButtonContainer>
+            <Button>Save</Button>
+          </ButtonContainer>
+        ) : null}
+      </RowCell>
     </Container>
   );
 };

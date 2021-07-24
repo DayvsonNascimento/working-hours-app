@@ -16,7 +16,7 @@ export const RowCell = styled.td`
   color: #737373;
 `;
 
-export const ButtonContainer = styled.td`
+export const ButtonContainer = styled.div`
   position: absolute;
   bottom: 0;
   right: 10px;

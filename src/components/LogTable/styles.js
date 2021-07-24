@@ -19,7 +19,7 @@ export const HeaderCell = styled.th`
   font-size: 16px;
   font-weight: 400;
   text-align: left;
-  width: 25%;
+  width: 20%;
 `;
 
 export const TableRow = styled.tr`

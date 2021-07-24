@@ -50,7 +50,6 @@ const LogTable = () => {
             <HeaderCell>Date</HeaderCell>
             <HeaderCell>Hours range</HeaderCell>
             <HeaderCell>Total</HeaderCell>
-            <HeaderCell>Comment</HeaderCell>
           </TableRow>
         </TableHeader>
         <Body>
