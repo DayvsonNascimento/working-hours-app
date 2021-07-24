@@ -1,46 +1,11 @@
-import { useHistory } from 'react-router-dom';
-import {
-  Container,
-  Content,
-  IconHome,
-  Title,
-  IconUser,
-  RighNavbarContainer,
-  Dropdown,
-  DropdownIcon,
-  DropdownContent,
-  DropdownItem,
-  DropdownBtn,
-} from './styles';
+import { Container, Content } from './styles';
+
+import Menu from './Menu/Menu';
 
 const Navbar = () => {
-  const history = useHistory();
-
-  const handleSignOut = () => {
-    history.push('/login');
-  };
-
   return (
     <Container>
-      <Content>
-        <IconHome />
-        <Title>Home</Title>
-
-        <RighNavbarContainer>
-          <IconUser />
-
-          <Dropdown>
-            <DropdownBtn>
-              <Title>Dayvson</Title>
-              <DropdownIcon />
-            </DropdownBtn>
-
-            <DropdownContent>
-              <DropdownItem onClick={handleSignOut}>Sign Out</DropdownItem>
-            </DropdownContent>
-          </Dropdown>
-        </RighNavbarContainer>
-      </Content>
+      <Menu />
     </Container>
   );
 };
