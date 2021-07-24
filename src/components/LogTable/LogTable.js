@@ -6,6 +6,9 @@ import LogCard from '../Cards/LogCard/LogCard';
 
 import {
   Container,
+  SelectContainer,
+  Select,
+  Option,
   Table,
   TableHeader,
   TableRow,
@@ -14,7 +17,24 @@ import {
 } from './styles';
 
 const LogTable = () => {
+  const [currentMonth, setcurrentMonth] = useState('');
+  const [currentYear, setcurrentYear] = useState('');
   const [daysOfMonth, setDaysOfMonth] = useState(null);
+
+  const months = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ];
 
   const getDaysCurrentMonth = (month, year) => {
     const numberDaysCurrentMonth = dayjs(`${year}-${month}-01`).daysInMonth();
@@ -31,19 +51,40 @@ const LogTable = () => {
     setDaysOfMonth(monthDays);
   };
 
+  const handleMonthChange = (event) => {
+    const selectedMonth = event.target.value;
+    getDaysCurrentMonth(selectedMonth, currentYear);
+    setcurrentMonth(selectedMonth);
+  };
+
   useEffect(() => {
     dayjs.extend(weekDay);
     dayjs.extend(weekOfYear);
 
     const now = dayjs();
-    const currentMonth = now.format('M');
-    const currentYear = now.format('YYYY');
+    const month = now.format('MMMM');
+    const year = now.format('YYYY');
 
-    getDaysCurrentMonth(currentMonth, currentYear);
+    getDaysCurrentMonth(month, year);
+    setcurrentMonth(month);
+    setcurrentYear(year);
   }, []);
 
   return (
     <Container>
+      <SelectContainer>
+        <Select>
+          <option value="2021">2021</option>
+          <option value="2021">2022</option>
+        </Select>
+        <Select value={currentMonth} onChange={handleMonthChange}>
+          {months.map((value, index) => (
+            <Option key={index} value={value}>
+              {value}
+            </Option>
+          ))}
+        </Select>
+      </SelectContainer>
       <Table>
         <TableHeader>
           <TableRow>
