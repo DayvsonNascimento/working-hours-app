@@ -3,6 +3,7 @@ import dayjs from 'dayjs';
 import * as weekDay from 'dayjs/plugin/weekday';
 import * as weekOfYear from 'dayjs/plugin/weekOfYear';
 import LogCard from '../Cards/LogCard/LogCard';
+import { MONTHS } from '../../utils/constants';
 
 import {
   Container,
@@ -20,21 +21,6 @@ const LogTable = () => {
   const [currentMonth, setcurrentMonth] = useState('');
   const [currentYear, setcurrentYear] = useState('');
   const [daysOfMonth, setDaysOfMonth] = useState(null);
-
-  const months = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December',
-  ];
 
   const getDaysCurrentMonth = (month, year) => {
     const numberDaysCurrentMonth = dayjs(`${year}-${month}-01`).daysInMonth();
@@ -75,10 +61,10 @@ const LogTable = () => {
       <SelectContainer>
         <Select>
           <Option value="2021">2021</Option>
-          <Option value="2021">2022</Option>
+          <Option value="2022">2022</Option>
         </Select>
         <Select value={currentMonth} onChange={handleMonthChange}>
-          {months.map((value, index) => (
+          {MONTHS.map((value, index) => (
             <Option key={index} value={value}>
               {value}
             </Option>
