@@ -22,19 +22,17 @@ const LogTable = () => {
   const [daysOfMonth, setDaysOfMonth] = useState(null);
 
   const loadWorkSchedule = async (month, year) => {
-    
     const data = await API.loadWorkSchedule({
       month: month,
       email: 'user@gmail.com',
     });
 
     const daysData = util.getDaysCurrentMonth(month, year, data);
-    console.log('chamado')
     setDaysOfMonth(daysData);
   };
 
   const handleMonthChange = (event) => {
-    const selectedMonth = + MONTHS.indexOf(event.target.value) + 1;
+    const selectedMonth = +MONTHS.indexOf(event.target.value) + 1;
 
     loadWorkSchedule(selectedMonth, currentYear);
     setcurrentMonth(selectedMonth);

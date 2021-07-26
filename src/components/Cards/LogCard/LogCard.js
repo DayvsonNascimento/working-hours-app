@@ -41,15 +41,15 @@ const LogCard = ({ day }) => {
       };
 
       API.saveWorkDaySchedule(workDaySchedule);
-    } else {
-      setErrors({ workHours: errorHoursWork, lunchHours: errorHoursLunch });
     }
+
+    setErrors({ workHours: errorHoursWork, lunchHours: errorHoursLunch });
   };
 
   useEffect(() => {
-    setHoursRangeWork(day.workHours)
-    setHoursRangeLunch(day.lunchHours)
-  }, [day])
+    setHoursRangeWork(day.workHours);
+    setHoursRangeLunch(day.lunchHours);
+  }, [day]);
 
   return (
     <Container>
