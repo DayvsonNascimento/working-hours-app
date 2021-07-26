@@ -1,6 +1,6 @@
 import { useHistory } from 'react-router';
 
-import Dropdown from '../Dropdown/Dropdown';
+import Dropdown from './Dropdown/Dropdown';
 import {
   Container,
   IconHome,
