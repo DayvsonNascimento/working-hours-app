@@ -1,6 +1,10 @@
 import { useState, useEffect } from 'react';
 import { isEmpty } from '../../../utils/utils';
-import { validate, validateOptinalField } from '../../../utils/hoursInput';
+import {
+  validate,
+  validateOptinalField,
+  validateHoursRange,
+} from '../../../utils/hoursInput';
 import * as API from '../../../services/user/User';
 
 import {
@@ -24,15 +28,36 @@ const LogCard = ({ day }) => {
   });
   const [errors, setErrors] = useState({});
 
-  const getFormatedDate = () => {
-    return `${day.date.format('D MMM, ddd')}`;
+  const getHoursrangeValue = (range) => {
+    const startTime = parseInt(range?.start?.replace(':', ''));
+    const endTime = parseInt(range?.end?.replace(':', ''));
+    const totalTime = endTime - startTime;
+
+    return totalTime;
+  };
+
+  const calculateTotalWorkedHours = () => {
+    const workHoursrangeValue = getHoursrangeValue(hoursRangeWork);
+    const lunchHoursrangeValue = getHoursrangeValue(hoursRangeLunch) || 0;
+    const workedHours = workHoursrangeValue - lunchHoursrangeValue;
+
+    return workedHours;
+  };
+
+  const hasValidHoursRangeValues = (workedHours) => {
+    return workedHours !== NaN && workedHours >= 0;
   };
 
   const saveHoursRange = async () => {
     const errorHoursWork = validate(hoursRangeWork);
     const errorHoursLunch = validateOptinalField(hoursRangeLunch);
+    const errorValuesRange = validateHoursRange(calculateTotalWorkedHours());
 
-    if (isEmpty(errorHoursWork) && isEmpty(errorHoursLunch)) {
+    if (
+      isEmpty(errorHoursWork) &&
+      isEmpty(errorHoursLunch) &&
+      isEmpty(errorValuesRange)
+    ) {
       const workDaySchedule = {
         email: 'user@gmail.com',
         date: day.date.format('YYYYMMDD'),
@@ -43,7 +68,24 @@ const LogCard = ({ day }) => {
       API.saveWorkDaySchedule(workDaySchedule);
     }
 
-    setErrors({ workHours: errorHoursWork, lunchHours: errorHoursLunch });
+    setErrors({
+      workHours: errorHoursWork,
+      lunchHours: errorHoursLunch,
+      range: errorValuesRange,
+    });
+  };
+
+  const formatHour = () => {
+    const workedHours = calculateTotalWorkedHours();
+    const formatedHour = hasValidHoursRangeValues(workedHours)
+      ? (workedHours / 100).toString() + 'h'
+      : '';
+
+    return formatedHour;
+  };
+
+  const getFormatedDate = () => {
+    return `${day.date.format('D MMM, ddd')}`;
   };
 
   useEffect(() => {
@@ -60,7 +102,11 @@ const LogCard = ({ day }) => {
           hoursRange={hoursRangeWork}
           setHoursRange={setHoursRangeWork}
         />
-        {<ErrorText>{errors?.workHours?.message}</ErrorText>}
+        {
+          <ErrorText>
+            {errors?.workHours?.message || errors?.range?.message}
+          </ErrorText>
+        }
         <HourInput
           labels={['Lunch start', 'Lunch end']}
           hoursRange={hoursRangeLunch}
@@ -69,7 +115,7 @@ const LogCard = ({ day }) => {
         {<ErrorText>{errors?.errorHoursLunch?.message}</ErrorText>}
       </RowCell>
       <RowCell>
-        24hrs
+        {formatHour()}
         {!isEmpty(hoursRangeWork) ? (
           <ButtonContainer>
             <Button onClick={saveHoursRange}>Save</Button>
