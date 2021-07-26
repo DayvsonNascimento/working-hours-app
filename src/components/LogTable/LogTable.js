@@ -43,6 +43,10 @@ const LogTable = () => {
     setcurrentMonth(selectedMonth);
   };
 
+  const getCurrentMonthName = () => {
+    return MONTHS[currentMonth - 1];
+  };
+
   useEffect(() => {
     dayjs.extend(weekDay);
     dayjs.extend(weekOfYear);
@@ -63,7 +67,7 @@ const LogTable = () => {
           <Option value="2021">2021</Option>
           <Option value="2022">2022</Option>
         </Select>
-        <Select value={currentMonth} onChange={handleMonthChange}>
+        <Select value={getCurrentMonthName()} onChange={handleMonthChange}>
           {MONTHS.map((value, index) => (
             <Option key={index} value={value}>
               {value}
