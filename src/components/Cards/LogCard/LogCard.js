@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { isEmpty } from '../../../utils/utils';
 
 import { Container, RowCell, ButtonContainer, Button } from './styles';
 
@@ -13,10 +14,6 @@ const LogCard = ({ day }) => {
     start: '',
     end: '',
   });
-
-  const checkForEmptyFields = (object) => {
-    return Object.values(object).every((el) => el === '');
-  };
 
   const getFormatedDate = () => {
     return `${day.date.format('D MMM, ddd')}`;
@@ -39,7 +36,7 @@ const LogCard = ({ day }) => {
       </RowCell>
       <RowCell>
         24hrs
-        {!checkForEmptyFields(hoursRangeWork) ? (
+        {!isEmpty(hoursRangeWork) ? (
           <ButtonContainer>
             <Button>Save</Button>
           </ButtonContainer>
