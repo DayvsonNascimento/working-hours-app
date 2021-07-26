@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { isEmpty } from '../../../utils/utils';
 import { validate, validateOptinalField } from '../../../utils/hoursInput';
 import * as API from '../../../services/user/User';
@@ -45,6 +45,11 @@ const LogCard = ({ day }) => {
       setErrors({ workHours: errorHoursWork, lunchHours: errorHoursLunch });
     }
   };
+
+  useEffect(() => {
+    setHoursRangeWork(day.workHours)
+    setHoursRangeLunch(day.lunchHours)
+  }, [day])
 
   return (
     <Container>

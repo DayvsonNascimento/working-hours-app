@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
-import dayjs from 'dayjs';
-import * as weekDay from 'dayjs/plugin/weekday';
-import * as weekOfYear from 'dayjs/plugin/weekOfYear';
+import * as util from '../../utils/dayjsUtils';
 import LogCard from '../Cards/LogCard/LogCard';
+import * as API from '../../services/user/User';
 import { MONTHS } from '../../utils/constants';
 
 import {
@@ -22,24 +21,22 @@ const LogTable = () => {
   const [currentYear, setcurrentYear] = useState('');
   const [daysOfMonth, setDaysOfMonth] = useState(null);
 
-  const getDaysCurrentMonth = (month, year) => {
-    const numberDaysCurrentMonth = dayjs(`${year}-${month}-01`).daysInMonth();
-    let monthDays = new Array(numberDaysCurrentMonth);
+  const loadWorkSchedule = async (month, year) => {
+    
+    const data = await API.loadWorkSchedule({
+      month: month,
+      email: 'user@gmail.com',
+    });
 
-    for (let index = 0; index < monthDays.length; index++) {
-      const date = dayjs(`${year}-${month}-${index + 1}`);
-      const dayObj = {
-        date: date,
-      };
-      monthDays[index] = dayObj;
-    }
-
-    setDaysOfMonth(monthDays);
+    const daysData = util.getDaysCurrentMonth(month, year, data);
+    console.log('chamado')
+    setDaysOfMonth(daysData);
   };
 
   const handleMonthChange = (event) => {
-    const selectedMonth = event.target.value;
-    getDaysCurrentMonth(selectedMonth, currentYear);
+    const selectedMonth = + MONTHS.indexOf(event.target.value) + 1;
+
+    loadWorkSchedule(selectedMonth, currentYear);
     setcurrentMonth(selectedMonth);
   };
 
@@ -48,14 +45,10 @@ const LogTable = () => {
   };
 
   useEffect(() => {
-    dayjs.extend(weekDay);
-    dayjs.extend(weekOfYear);
+    const month = util.getFormatedMonth();
+    const year = util.getFormatedYear();
 
-    const now = dayjs();
-    const month = now.format('M');
-    const year = now.format('YYYY');
-
-    getDaysCurrentMonth(month, year);
+    loadWorkSchedule(month, year);
     setcurrentMonth(month);
     setcurrentYear(year);
   }, []);

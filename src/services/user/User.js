@@ -9,3 +9,13 @@ export const saveWorkDaySchedule = async (body) => {
     console.log(error);
   }
 };
+
+export const loadWorkSchedule = async (params) => {
+  try {
+    const { data } = await api.get('/workSchedule', { params: params });
+
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
