@@ -20,7 +20,7 @@ export const ButtonContainer = styled.div`
   position: absolute;
   bottom: 0;
   right: 10px;
-  margin-bottom: 15px
+  margin-bottom: 15px;
 `;
 
 export const Button = styled.button`
@@ -32,4 +32,13 @@ export const Button = styled.button`
   color: white;
   padding: 8px;
   border: none;
+`;
+
+export const ErrorText = styled.div`
+  margin-top: -7px;
+  font-size: 12px;
+  text-align: left;
+  color: #f02849;
+  margin-bottom: 2px;
+  padding-left: 3px;
 `;
