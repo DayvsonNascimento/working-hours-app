@@ -56,7 +56,6 @@ const LogTable = () => {
       <SelectContainer>
         <Select>
           <Option value="2021">2021</Option>
-          <Option value="2022">2022</Option>
         </Select>
         <Select value={getCurrentMonthName()} onChange={handleMonthChange}>
           {MONTHS.map((value, index) => (

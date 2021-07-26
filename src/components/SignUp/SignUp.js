@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { validate } from '../../utils/formValidor';
+import { validate } from '../../utils/validators/signUpFormValidator';
 import * as util from '../../utils/utils';
 import * as API from '../../services/auth/Auth';
 import { Form, Label, Input, Button, Title, ErroText } from './styles';

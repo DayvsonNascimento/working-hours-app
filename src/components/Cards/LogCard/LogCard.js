@@ -4,7 +4,7 @@ import {
   validate,
   validateOptinalField,
   validateHoursRange,
-} from '../../../utils/hoursInput';
+} from '../../../utils/validators/hoursInputValidator';
 import * as API from '../../../services/user/User';
 
 import {
@@ -15,7 +15,7 @@ import {
   ErrorText,
 } from './styles';
 
-import HourInput from '../../HourInput/HourInput';
+import HourInput from '../../CustomInput/HourInput';
 
 const LogCard = ({ day }) => {
   const [hoursRangeWork, setHoursRangeWork] = useState({
