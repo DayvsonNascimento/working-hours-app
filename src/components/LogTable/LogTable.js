@@ -1,7 +1,4 @@
-import { useEffect, useState } from 'react';
-import * as util from '../../utils/dayjsUtils';
 import LogCard from '../Cards/LogCard/LogCard';
-import * as API from '../../services/user/User';
 import { MONTHS } from '../../utils/constants';
 
 import {
@@ -16,40 +13,16 @@ import {
   Body,
 } from './styles';
 
-const LogTable = () => {
-  const [currentMonth, setcurrentMonth] = useState('');
-  const [currentYear, setcurrentYear] = useState('');
-  const [daysOfMonth, setDaysOfMonth] = useState(null);
-
-  const loadWorkSchedule = async (month, year) => {
-    const data = await API.loadWorkSchedule({
-      month: month,
-      email: 'user@gmail.com',
-    });
-
-    const daysData = util.getDaysCurrentMonth(month, year, data);
-    setDaysOfMonth(daysData);
-  };
-
+const LogTable = ({ workLogs, month, year, loadWorkLogs }) => {
   const handleMonthChange = (event) => {
     const selectedMonth = +MONTHS.indexOf(event.target.value) + 1;
 
-    loadWorkSchedule(selectedMonth, currentYear);
-    setcurrentMonth(selectedMonth);
+    loadWorkLogs(selectedMonth, year);
   };
 
-  const getCurrentMonthName = () => {
-    return MONTHS[currentMonth - 1];
+  const getMonthFullName = () => {
+    return MONTHS[month - 1];
   };
-
-  useEffect(() => {
-    const month = util.getFormatedMonth();
-    const year = util.getFormatedYear();
-
-    loadWorkSchedule(month, year);
-    setcurrentMonth(month);
-    setcurrentYear(year);
-  }, []);
 
   return (
     <Container>
@@ -57,7 +30,7 @@ const LogTable = () => {
         <Select>
           <Option value="2021">2021</Option>
         </Select>
-        <Select value={getCurrentMonthName()} onChange={handleMonthChange}>
+        <Select value={getMonthFullName()} onChange={handleMonthChange}>
           {MONTHS.map((value, index) => (
             <Option key={index} value={value}>
               {value}
@@ -74,7 +47,7 @@ const LogTable = () => {
           </TableRow>
         </TableHeader>
         <Body>
-          {daysOfMonth?.map((day, index) => (
+          {workLogs?.map((day, index) => (
             <LogCard key={index} day={day} />
           ))}
         </Body>
