@@ -16,12 +16,12 @@ export const validate = (values) => {
 export const validateOptinalField = (values) => {
   const error = {};
 
-  if (values.start && !values.ennd) {
+  if (values.start && !values.end) {
     error.message = 'Enter end time';
   } else if (values.end && !values.start) {
     error.message = 'Enter start time';
   } else if (values.start && values.end) {
-    if (values.start < values.end)
+    if (values.start > values.end)
       error.message = 'Start time should be less than end';
   }
 
