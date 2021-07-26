@@ -1,5 +1,6 @@
 import LogCard from '../Cards/LogCard/LogCard';
 import { MONTHS } from '../../utils/constants';
+import * as API from '../../services/user/User';
 
 import {
   Container,
@@ -22,6 +23,18 @@ const LogTable = ({ workLogs, month, year, loadWorkLogs }) => {
 
   const getMonthFullName = () => {
     return MONTHS[month - 1];
+  };
+
+  const submitWorkLog = (date, workHours, lunchHours) => {
+    const workDaySchedule = {
+      email: 'user@gmail.com',
+      date: date,
+      workHours: workHours,
+      lunchHours: lunchHours,
+    };
+
+    API.saveWorkDaySchedule(workDaySchedule);
+    loadWorkLogs(month, year)
   };
 
   return (
@@ -48,7 +61,7 @@ const LogTable = ({ workLogs, month, year, loadWorkLogs }) => {
         </TableHeader>
         <Body>
           {workLogs?.map((day, index) => (
-            <LogCard key={index} day={day} />
+            <LogCard key={index} day={day} submitWorkLog={submitWorkLog}/>
           ))}
         </Body>
       </Table>

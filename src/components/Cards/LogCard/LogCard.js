@@ -5,7 +5,6 @@ import {
   validateOptinalField,
   validateHoursRange,
 } from '../../../utils/validators/hoursInputValidator';
-import * as API from '../../../services/user/User';
 
 import {
   Container,
@@ -17,7 +16,7 @@ import {
 
 import HourInput from '../../CustomInput/HourInput';
 
-const LogCard = ({ day }) => {
+const LogCard = ({ day, submitWorkLog }) => {
   const [hoursRangeWork, setHoursRangeWork] = useState({
     start: '',
     end: '',
@@ -43,14 +42,11 @@ const LogCard = ({ day }) => {
       util.isEmpty(errorHoursLunch) &&
       util.isEmpty(errorValuesRange)
     ) {
-      const workDaySchedule = {
-        email: 'user@gmail.com',
-        date: day.date.format('YYYYMMDD'),
-        workHours: hoursRangeWork,
-        lunchHours: hoursRangeLunch,
-      };
-
-      API.saveWorkDaySchedule(workDaySchedule);
+      submitWorkLog(
+        day.date.format('YYYYMMDD'),
+        hoursRangeWork,
+        hoursRangeLunch
+      );
     }
 
     setErrors({
