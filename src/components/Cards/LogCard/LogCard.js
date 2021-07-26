@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { isEmpty } from '../../../utils/utils';
+import * as util from '../../../utils/utils';
 import {
   validate,
   validateOptinalField,
@@ -28,35 +28,20 @@ const LogCard = ({ day }) => {
   });
   const [errors, setErrors] = useState({});
 
-  const getHoursrangeValue = (range) => {
-    const startTime = parseInt(range?.start?.replace(':', ''));
-    const endTime = parseInt(range?.end?.replace(':', ''));
-    const totalTime = endTime - startTime;
-
-    return totalTime;
-  };
-
-  const calculateTotalWorkedHours = () => {
-    const workHoursrangeValue = getHoursrangeValue(hoursRangeWork);
-    const lunchHoursrangeValue = getHoursrangeValue(hoursRangeLunch) || 0;
-    const workedHours = workHoursrangeValue - lunchHoursrangeValue;
-
-    return workedHours;
-  };
-
-  const hasValidHoursRangeValues = (workedHours) => {
-    return workedHours !== NaN && workedHours >= 0;
-  };
-
   const saveHoursRange = async () => {
     const errorHoursWork = validate(hoursRangeWork);
     const errorHoursLunch = validateOptinalField(hoursRangeLunch);
-    const errorValuesRange = validateHoursRange(calculateTotalWorkedHours());
+
+    const workedHoursSum = util.calculateTotalWorkedHours(
+      hoursRangeWork,
+      hoursRangeLunch
+    );
+    const errorValuesRange = validateHoursRange(workedHoursSum);
 
     if (
-      isEmpty(errorHoursWork) &&
-      isEmpty(errorHoursLunch) &&
-      isEmpty(errorValuesRange)
+      util.isEmpty(errorHoursWork) &&
+      util.isEmpty(errorHoursLunch) &&
+      util.isEmpty(errorValuesRange)
     ) {
       const workDaySchedule = {
         email: 'user@gmail.com',
@@ -76,9 +61,12 @@ const LogCard = ({ day }) => {
   };
 
   const formatHour = () => {
-    const workedHours = calculateTotalWorkedHours();
-    const formatedHour = hasValidHoursRangeValues(workedHours)
-      ? (workedHours / 100).toString() + 'h'
+    const workedHoursDay = util.calculateTotalWorkedHours(
+      hoursRangeWork,
+      hoursRangeLunch
+    );
+    const formatedHour = util.hasValidHoursRangeValues(workedHoursDay)
+      ? (workedHoursDay / 100).toString() + 'h'
       : '';
 
     return formatedHour;
@@ -116,7 +104,7 @@ const LogCard = ({ day }) => {
       </RowCell>
       <RowCell>
         {formatHour()}
-        {!isEmpty(hoursRangeWork) ? (
+        {!util.isEmpty(hoursRangeWork) ? (
           <ButtonContainer>
             <Button onClick={saveHoursRange}>Save</Button>
           </ButtonContainer>

@@ -1,17 +1,47 @@
+import { useEffect, useState } from 'react';
+import * as util from '../../../utils/utils';
+
 import { Container, Text, Title } from './styles';
 
-const HoursResumeCard = () => {
+const HoursResumeCard = ({ workLogs }) => {
+  const [workedHoursMonth, setWorkedHoursMonth] = useState(null);
+
+  const getExpectedHoursMonth = () => {
+    let totalHours = 0;
+
+    workLogs?.forEach((element) => {
+      const dayRangeSum =
+        util.calculateTotalWorkedHours(element.workHours, element.lunchHours) ||
+        0;
+      totalHours += dayRangeSum;
+    });
+
+    setWorkedHoursMonth(totalHours);
+  };
+
+  const getFormatedHour = (hour) => {
+    return util.formatHour(hour);
+  };
+
+  const getPorcentage = (part, total) => {
+    return Math.floor((part / 100 / total) * 100);
+  };
+
+  useEffect(() => {
+    getExpectedHoursMonth();
+  }, [workLogs]);
+
   return (
     <Container>
-      <Title>This week</Title>
-      <Text>40h expected</Text>
-      <Text>0h registered (0%)</Text>
+      <Title>Today</Title>
+      <Text>8h expected</Text>
+      <Text>2h registered (10%)</Text>
       <Title>At July</Title>
       <Text>168h expected</Text>
-      <Text>16h registered (10%)</Text>
-      <Title>At 2021</Title>
-      <Text>1424h expected</Text>
-      <Text> 424h registered (30%)</Text>
+      <Text>
+        {workedHoursMonth ? getFormatedHour(workedHoursMonth) : 0} registered (
+        {workedHoursMonth ? getPorcentage(workedHoursMonth, 168) : 0}%)
+      </Text>
     </Container>
   );
 };

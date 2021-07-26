@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 
 import * as API from '../../services/user/User';
 import * as util from '../../utils/dayjsUtils';
+
 import LogTable from '../../components/LogTable/LogTable';
 import ProfileCard from '../../components/Cards/ProfileCard/ProfileCard';
 import HoursResumeCard from '../../components/Cards/HoursResumeCard/HoursResumeCard';
