@@ -1,12 +1,11 @@
 import Login from '../../components/Login/Login';
-
-import { Container } from './styles';
+import { PageContainer } from '../../assets/styles/GlobaStyles';
 
 const LoginPage = () => {
   return (
-    <Container>
+    <PageContainer>
       <Login />
-    </Container>
+    </PageContainer>
   );
 };
 

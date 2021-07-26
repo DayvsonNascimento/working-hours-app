@@ -1,4 +1,4 @@
-import { createGlobalStyle, css } from 'styled-components';
+import styled, { createGlobalStyle, css } from 'styled-components';
 
 export default createGlobalStyle`
   * body {
@@ -32,4 +32,14 @@ export default createGlobalStyle`
     input:hover {
     border-color: rgb(29, 161, 242);
     }
+`;
+
+export const PageContainer = styled.div`
+  background-color: #3598dc;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
 `;

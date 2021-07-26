@@ -1,11 +1,11 @@
 import SignUp from '../../components/SignUp/SignUp';
-import { Container } from './styles';
+import { PageContainer } from '../../assets/styles/GlobaStyles';
 
 const SignUpPage = () => {
   return (
-    <Container>
+    <PageContainer>
       <SignUp />
-    </Container>
+    </PageContainer>
   );
 };
 
