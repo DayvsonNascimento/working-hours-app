@@ -11,11 +11,11 @@ export const signUp = async (body) => {
 };
 
 export const login = async (body) => {
-    try {
-      const data = await api.post('/login', body);
-  
-      return data;
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  try {
+    const data = await api.post('/login', body);
+
+    return data;
+  } catch (error) {
+    console.log(error.message);
+  }
+};

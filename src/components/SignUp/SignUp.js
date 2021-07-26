@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { validate } from '../../utils/formValidor';
-import { isEmpty } from '../../utils/utils';
+import * as util from '../../utils/utils';
 import * as API from '../../services/auth/Auth';
 import { Form, Label, Input, Button, Title, ErroText } from './styles';
 
 const SignUp = () => {
+  const history = useHistory();
   const [formValues, setFormValues] = useState({
     fullName: '',
     email: '',
@@ -13,11 +14,11 @@ const SignUp = () => {
     confirmPassword: '',
   });
   const [errors, setErrors] = useState({});
-  const [hasSubmited, setHasSubmited] = useState(false);
-  const history = useHistory();
+  const [hasSubmitted, setHasSubmited] = useState(false);
 
   const signUp = async () => {
     const response = await API.signUp(formValues);
+
     if (response) {
       history.push('/login');
     }
@@ -28,7 +29,7 @@ const SignUp = () => {
     event.preventDefault();
     const formErrors = validate(formValues);
 
-    if (isEmpty(formErrors)) {
+    if (util.isEmpty(formErrors)) {
       setHasSubmited(true);
       signUp();
     } else {
@@ -36,12 +37,16 @@ const SignUp = () => {
     }
   };
 
-  const hangleChange = (event, property) => {
+  const handleChange = (event, property) => {
     setFormValues({ ...formValues, [property]: event.target.value });
 
     if (errors[property]) {
       setErrors({ ...errors, [property]: undefined });
     }
+  };
+
+  const shouldDisableSubmit = () => {
+    return hasSubmitted || util.hasEmptyField(formValues);
   };
 
   return (
@@ -52,7 +57,7 @@ const SignUp = () => {
       <Input
         type="text"
         value={formValues.fullName}
-        onChange={(event) => hangleChange(event, 'fullName')}
+        onChange={(event) => handleChange(event, 'fullName')}
       ></Input>
       <ErroText>{errors.fullName}</ErroText>
 
@@ -60,7 +65,7 @@ const SignUp = () => {
       <Input
         type="text"
         value={formValues.email}
-        onChange={(event) => hangleChange(event, 'email')}
+        onChange={(event) => handleChange(event, 'email')}
       ></Input>
       <ErroText>{errors.email}</ErroText>
 
@@ -68,7 +73,7 @@ const SignUp = () => {
       <Input
         type="password"
         value={formValues.password}
-        onChange={(event) => hangleChange(event, 'password')}
+        onChange={(event) => handleChange(event, 'password')}
       ></Input>
       <ErroText>{errors.password}</ErroText>
 
@@ -76,11 +81,11 @@ const SignUp = () => {
       <Input
         type="password"
         value={formValues.confirmPassword}
-        onChange={(event) => hangleChange(event, 'confirmPassword')}
+        onChange={(event) => handleChange(event, 'confirmPassword')}
       ></Input>
       <ErroText>{errors.confirmPassword}</ErroText>
 
-      <Button type="submit" disabled={hasSubmited}>
+      <Button type="submit" disabled={shouldDisableSubmit()}>
         Register
       </Button>
     </Form>

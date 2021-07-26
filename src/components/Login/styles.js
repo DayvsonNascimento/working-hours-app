@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const Form = styled.form`
   background-color: #ffffff;
   width: 250px;
   display: flex;
@@ -28,7 +28,7 @@ export const Input = styled.input`
   cursor: text;
 `;
 
-export const Button = styled.div`
+export const Button = styled.button`
   background-color: rgb(29, 161, 242);
   cursor: pointer;
   margin-top: 15px;
@@ -39,6 +39,11 @@ export const Button = styled.div`
   padding: 8px;
   border: none;
   font-weight: bold;
+
+  &:disabled {
+    cursor: auto;
+    background-color: rgb(29, 161, 242, 0.5);
+  }
 `;
 
 export const Title = styled.h2`

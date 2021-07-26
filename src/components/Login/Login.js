@@ -1,42 +1,59 @@
+import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { hasEmptyField } from '../../utils/utils';
+import * as API from '../../services/auth/Auth';
 
-import {
-  Container,
-  Label,
-  Input,
-  Button,
-  Title,
-  SignUpText,
-  Link,
-} from './styles';
+import { Form, Label, Input, Button, Title, SignUpText, Link } from './styles';
 
 const Login = () => {
   const history = useHistory();
+  const [formValues, setFormValues] = useState({
+    email: '',
+    password: '',
+  });
 
-  const handleLogin = () => {
-    history.push('/');
+  const handleLogin = async (event) => {
+    event.preventDefault()
+
+    const response = await API.login(formValues);
+
+    if (response) {
+      history.push('/');
+    }
   };
 
   const handleSignUpRedirect = () => {
     history.push('/signup');
   };
 
+  const handleChange = (event, property) => {
+    setFormValues({ ...formValues, [property]: event.target.value });
+  };
+
   return (
-    <Container>
+    <Form onSubmit={handleLogin}>
       <Title>Login</Title>
 
       <Label>Email</Label>
-      <Input type="text"></Input>
+      <Input
+        type="text"
+        value={formValues.email}
+        onChange={(event) => handleChange(event, 'email')}
+      ></Input>
 
       <Label>Password</Label>
-      <Input type="password"></Input>
+      <Input
+        type="password"
+        value={formValues.password}
+        onChange={(event) => handleChange(event, 'password')}
+      ></Input>
 
-      <Button onClick={handleLogin}>Log In</Button>
+      <Button disabled={hasEmptyField(formValues)}>Log In</Button>
       <SignUpText>
         Don't have an account?
         <Link onClick={handleSignUpRedirect}> Sign up here!</Link>
       </SignUpText>
-    </Container>
+    </Form>
   );
 };
 
