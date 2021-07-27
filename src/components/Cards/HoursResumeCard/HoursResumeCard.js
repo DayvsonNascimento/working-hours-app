@@ -1,7 +1,10 @@
 import { useEffect, useState } from 'react';
 import * as util from '../../../utils/utils';
 import * as dayjsUtil from '../../../utils/dayjsUtils';
-import { EXPECTED_HOURS_DAY } from '../../../utils/constants';
+import {
+  EXPECTED_HOURS_DAY,
+  EXPECTED_HOURS_MONTH,
+} from '../../../utils/constants';
 
 import { Container, Text, Title } from './styles';
 
@@ -56,7 +59,7 @@ const HoursResumeCard = ({ workLogs, month }) => {
       <Text>{EXPECTED_HOURS_DAY}h expected</Text>
       <Text>{getFormatedHour(workedHoursDay)} registered</Text>
       <Title>At {util.getMonthFullName(month)}</Title>
-      <Text>168h expected</Text>
+      <Text>{EXPECTED_HOURS_MONTH}h expected</Text>
       <Text>{getFormatedHour(workedHoursMonth)} registered</Text>
     </Container>
   );

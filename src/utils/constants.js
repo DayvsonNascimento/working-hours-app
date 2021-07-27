@@ -14,3 +14,5 @@ export const MONTHS = [
 ];
 
 export const EXPECTED_HOURS_DAY = 8;
+
+export const EXPECTED_HOURS_MONTH = 168;
