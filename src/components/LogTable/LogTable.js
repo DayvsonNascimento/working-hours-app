@@ -16,7 +16,7 @@ import {
 
 const LogTable = ({ workLogs, month, year, loadWorkLogs }) => {
   const handleMonthChange = (event) => {
-    const selectedMonth = +MONTHS.indexOf(event.target.value) + 1;
+    const selectedMonth = MONTHS.indexOf(event.target.value) + 1;
 
     loadWorkLogs(selectedMonth, year);
   };
@@ -25,7 +25,7 @@ const LogTable = ({ workLogs, month, year, loadWorkLogs }) => {
     return MONTHS[month - 1];
   };
 
-  const submitWorkLog = (date, workHours, lunchHours) => {
+  const submitWorkLog = async (date, workHours, lunchHours) => {
     const workDaySchedule = {
       email: 'user@gmail.com',
       date: date,
@@ -33,8 +33,8 @@ const LogTable = ({ workLogs, month, year, loadWorkLogs }) => {
       lunchHours: lunchHours,
     };
 
-    API.saveWorkDaySchedule(workDaySchedule);
-    loadWorkLogs(month, year)
+    await API.saveWorkDaySchedule(workDaySchedule);
+    loadWorkLogs(month, year);
   };
 
   return (
@@ -61,7 +61,7 @@ const LogTable = ({ workLogs, month, year, loadWorkLogs }) => {
         </TableHeader>
         <Body>
           {workLogs?.map((day, index) => (
-            <LogCard key={index} day={day} submitWorkLog={submitWorkLog}/>
+            <LogCard key={index} day={day} submitWorkLog={submitWorkLog} />
           ))}
         </Body>
       </Table>

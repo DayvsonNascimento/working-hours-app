@@ -96,7 +96,7 @@ const LogCard = ({ day, submitWorkLog }) => {
           hoursRange={hoursRangeLunch}
           setHoursRange={setHoursRangeLunch}
         />
-        {<ErrorText>{errors?.errorHoursLunch?.message}</ErrorText>}
+        {<ErrorText>{errors?.lunchHours?.message}</ErrorText>}
       </RowCell>
       <RowCell>
         {formatHour()}
