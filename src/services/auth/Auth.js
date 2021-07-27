@@ -1,4 +1,5 @@
 import api from '../api';
+import Cookies from 'js-cookie';
 
 export const signUp = async (body) => {
   try {
@@ -12,10 +13,13 @@ export const signUp = async (body) => {
 
 export const login = async (body) => {
   try {
-    const data = await api.post('/login', body);
+    const {data} = await api.post('/login', body);
+    Cookies.set('auth_token', data.token);
 
     return data;
   } catch (error) {
-    console.log(error.message);
+    const message =
+      error?.response?.data?.error || 'Could not log in, try again.';
+    return { error: message };
   }
 };

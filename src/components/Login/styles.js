@@ -69,3 +69,12 @@ export const Link = styled.a`
   cursor: pointer;
   font-weight: 800;
 `;
+
+export const ErrorText = styled.div`
+  margin-top: 0px;
+  font-size: 12px;
+  text-align: left;
+  color: #f02849;
+  margin-bottom: 2px;
+  padding-left: 3px;
+`;

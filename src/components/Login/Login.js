@@ -3,7 +3,16 @@ import { useHistory } from 'react-router-dom';
 import { hasEmptyField } from '../../utils/utils';
 import * as API from '../../services/auth/Auth';
 
-import { Form, Label, Input, Button, Title, SignUpText, Link } from './styles';
+import {
+  Form,
+  Label,
+  Input,
+  Button,
+  Title,
+  SignUpText,
+  Link,
+  ErrorText,
+} from './styles';
 
 const Login = () => {
   const history = useHistory();
@@ -11,15 +20,17 @@ const Login = () => {
     email: '',
     password: '',
   });
+  const [loginError, setLoginError] = useState(null);
 
   const handleLogin = async (event) => {
-    event.preventDefault()
+    event.preventDefault();
 
     const response = await API.login(formValues);
 
-    if (response) {
+    if (!response.error) {
       history.push('/');
     }
+    setLoginError(response.error);
   };
 
   const handleSignUpRedirect = () => {
@@ -33,6 +44,7 @@ const Login = () => {
   return (
     <Form onSubmit={handleLogin}>
       <Title>Login</Title>
+      <ErrorText>{loginError}</ErrorText>
 
       <Label>Email</Label>
       <Input
