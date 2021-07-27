@@ -10,15 +10,19 @@ const HoursResumeCard = ({ workLogs, month }) => {
   const [workedHoursDay, setWorkedHoursDay] = useState(null);
 
   const getWorkedHoursMonth = () => {
-    let totalHours = 0;
+    let totalDuration = dayjsUtil.createDuration();
+
     workLogs?.forEach((element) => {
-      const dayRangeSum =
-        util.calculateTotalWorkedHours(element.workHours, element.lunchHours) ||
-        0;
-      totalHours += dayRangeSum;
+      const valuesRange = dayjsUtil.calculateTotalWorkedHours(
+        element.workHours,
+        element.lunchHours
+      );
+      if (valuesRange) {
+        totalDuration = totalDuration.add(valuesRange);
+      }
     });
 
-    setWorkedHoursMonth(totalHours);
+    setWorkedHoursMonth(totalDuration);
   };
 
   const getworkedHoursDay = () => {
@@ -28,7 +32,7 @@ const HoursResumeCard = ({ workLogs, month }) => {
     );
 
     if (currentDayLog?.length) {
-      const workedHours = util.calculateTotalWorkedHours(
+      const workedHours = dayjsUtil.calculateTotalWorkedHours(
         currentDayLog[0].workHours,
         currentDayLog[0].lunchHours
       );
@@ -38,11 +42,7 @@ const HoursResumeCard = ({ workLogs, month }) => {
   };
 
   const getFormatedHour = (hour) => {
-    return util.formatHour(hour);
-  };
-
-  const getPorcentage = (part, total) => {
-    return Math.floor((part / 100 / total) * 100) || 0;
+    return dayjsUtil.formatHour(hour);
   };
 
   useEffect(() => {
@@ -54,16 +54,10 @@ const HoursResumeCard = ({ workLogs, month }) => {
     <Container>
       <Title>Today</Title>
       <Text>{EXPECTED_HOURS_DAY}h expected</Text>
-      <Text>
-        {getFormatedHour(workedHoursDay)} registered (
-        {getPorcentage(workedHoursDay, EXPECTED_HOURS_DAY)}%)
-      </Text>
+      <Text>{getFormatedHour(workedHoursDay)} registered</Text>
       <Title>At {util.getMonthFullName(month)}</Title>
       <Text>168h expected</Text>
-      <Text>
-        {getFormatedHour(workedHoursMonth)} registered (
-        {getPorcentage(workedHoursMonth, 168)}%)
-      </Text>
+      <Text>{getFormatedHour(workedHoursMonth)} registered</Text>
     </Container>
   );
 };

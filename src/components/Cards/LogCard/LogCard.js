@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import * as util from '../../../utils/utils';
+import * as dayjsUtil from '../../../utils/dayjsUtils';
 import {
   validate,
   validateOptinalField,
@@ -31,7 +32,7 @@ const LogCard = ({ day, submitWorkLog }) => {
     const errorHoursWork = validate(hoursRangeWork);
     const errorHoursLunch = validateOptinalField(hoursRangeLunch);
 
-    const workedHoursSum = util.calculateTotalWorkedHours(
+    const workedHoursSum = dayjsUtil.calculateTotalWorkedHours(
       hoursRangeWork,
       hoursRangeLunch
     );
@@ -57,13 +58,12 @@ const LogCard = ({ day, submitWorkLog }) => {
   };
 
   const formatHour = () => {
-    const workedHoursDay = util.calculateTotalWorkedHours(
+    const workedHoursDay = dayjsUtil.calculateTotalWorkedHours(
       hoursRangeWork,
       hoursRangeLunch
     );
-    const formatedHour = util.hasValidHoursRangeValues(workedHoursDay)
-      ? (workedHoursDay / 100).toString() + 'h'
-      : '';
+
+    const formatedHour = dayjsUtil.formatHour(workedHoursDay)
 
     return formatedHour;
   };

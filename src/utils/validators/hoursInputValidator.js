@@ -31,7 +31,7 @@ export const validateOptinalField = (values) => {
 export const validateHoursRange = (range) => {
   const error = {};
 
-  if (range && range < 0) {
+  if (range && (range.hours() < 0 || range.minutes() < 0)) {
     error.message = 'Lunch time is greater than worked hours';
   }
 
