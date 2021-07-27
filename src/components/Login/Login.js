@@ -28,7 +28,8 @@ const Login = () => {
     const response = await API.login(formValues);
 
     if (!response.error) {
-      return history.push('/');
+      history.push('/');
+      return history.go(0);
     }
     setLoginError(response.error);
   };
