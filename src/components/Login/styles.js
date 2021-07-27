@@ -73,7 +73,7 @@ export const Link = styled.a`
 export const ErrorText = styled.div`
   margin-top: 0px;
   font-size: 12px;
-  text-align: left;
+  text-align: center;
   color: #f02849;
   margin-bottom: 2px;
   padding-left: 3px;

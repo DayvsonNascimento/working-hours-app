@@ -1,3 +1,5 @@
+import { removeToken } from '../../../../utils/authCookieUtil';
+
 import {
   Container,
   DropdownBtn,
@@ -8,6 +10,11 @@ import {
 } from './styles';
 
 const Dropdown = ({ label, handleItemSelection }) => {
+  const handleSignOut = () => {
+    removeToken();
+    handleItemSelection('login');
+  };
+
   return (
     <Container>
       <DropdownBtn>
@@ -16,9 +23,7 @@ const Dropdown = ({ label, handleItemSelection }) => {
       </DropdownBtn>
 
       <DropdownContent>
-        <DropdownItem onClick={() => handleItemSelection('login')}>
-          Sign Out
-        </DropdownItem>
+        <DropdownItem onClick={handleSignOut}>Sign Out</DropdownItem>
       </DropdownContent>
     </Container>
   );

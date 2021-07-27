@@ -26,7 +26,7 @@ const Menu = () => {
 
       <RightMenuContainer>
         <IconUser />
-        <Dropdown label={'Dayvson'} handleItemSelection={handleItemSelection} />
+        <Dropdown handleItemSelection={handleItemSelection} />
       </RightMenuContainer>
     </Container>
   );

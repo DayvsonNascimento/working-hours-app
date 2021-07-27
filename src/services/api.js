@@ -1,8 +1,8 @@
 import axios from 'axios';
-import Cookies from 'js-cookie';
+import { getToken } from '../utils/authCookieUtil';
 
 const apiUrl = process.env.REACT_APP_API_URL;
-const apiToken = `Bearer ${Cookies.get('auth_token')}`;
+const apiToken = `Bearer ${getToken()}`;
 
 const params = {
   baseURL: apiUrl,
