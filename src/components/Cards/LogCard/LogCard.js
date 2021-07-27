@@ -31,7 +31,6 @@ const LogCard = ({ day, submitWorkLog }) => {
   const saveHoursRange = async () => {
     const errorHoursWork = validate(hoursRangeWork);
     const errorHoursLunch = validateOptinalField(hoursRangeLunch);
-
     const workedHoursSum = dayjsUtil.calculateTotalWorkedHours(
       hoursRangeWork,
       hoursRangeLunch
@@ -62,7 +61,6 @@ const LogCard = ({ day, submitWorkLog }) => {
       hoursRangeWork,
       hoursRangeLunch
     );
-
     const formatedHour = dayjsUtil.formatHour(workedHoursDay)
 
     return formatedHour;

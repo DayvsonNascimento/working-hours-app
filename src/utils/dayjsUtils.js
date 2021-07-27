@@ -34,7 +34,7 @@ export const formatHour = (workedHours) => {
   let formatedHour = '';
 
   if (hasValidHoursRangeValues(workedHours)) {
-    const hours = workedHours.hours() + (workedHours.days() * 24);
+    const hours = workedHours.hours() + (workedHours.days() || 0) * 24;
     const minutes = workedHours.minutes();
 
     if (hours === 0 && minutes === 0) {
@@ -49,6 +49,22 @@ export const formatHour = (workedHours) => {
   }
 
   return formatedHour;
+};
+
+export const calculateTotalWorkedHours = (hoursRangeWork, hoursRangeLunch) => {
+  const workHoursrangeValue = getHoursrangeValue(hoursRangeWork);
+  const lunchHoursrangeValue = getHoursrangeValue(hoursRangeLunch);
+  const workedHours = workHoursrangeValue?.subtract(lunchHoursrangeValue);
+
+  return workedHours;
+};
+
+export const hasValidHoursRangeValues = (range) => {
+  return range && range.hours() >= 0 && range.minutes() >= 0;
+};
+
+export const createDuration = () => {
+  return dayjs.duration({ hours: 0, minutes: 0 });
 };
 
 const getHoursrangeValue = (range) => {
@@ -67,22 +83,6 @@ const getHoursrangeValue = (range) => {
   }
 
   return totalTime;
-};
-
-export const calculateTotalWorkedHours = (hoursRangeWork, hoursRangeLunch) => {
-  const workHoursrangeValue = getHoursrangeValue(hoursRangeWork);
-  const lunchHoursrangeValue = getHoursrangeValue(hoursRangeLunch);
-  const workedHours = workHoursrangeValue?.subtract(lunchHoursrangeValue);
-
-  return workedHours;
-};
-
-export const hasValidHoursRangeValues = (range) => {
-  return range && range.hours() >= 0 && range.minutes() >= 0;
-};
-
-export const createDuration = () => {
-  return dayjs.duration({ hours: 0, minutes: 0 });
 };
 
 const findElement = (arr, value) => {
