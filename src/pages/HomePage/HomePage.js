@@ -20,7 +20,6 @@ const HomePage = () => {
 
     const data = await API.loadWorkSchedule({
       month: month,
-      email: 'user@gmail.com',
     });
 
     const daysData = util.getDaysCurrentMonth(month, year, data);

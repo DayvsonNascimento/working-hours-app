@@ -27,7 +27,6 @@ const LogTable = ({ workLogs, month, year, loadWorkLogs }) => {
 
   const submitWorkLog = async (date, workHours, lunchHours) => {
     const workDaySchedule = {
-      email: 'user@gmail.com',
       date: date,
       workHours: workHours,
       lunchHours: lunchHours,
