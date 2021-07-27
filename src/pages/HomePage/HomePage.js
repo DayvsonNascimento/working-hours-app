@@ -13,6 +13,7 @@ const HomePage = () => {
   const [workLogs, setWorkLogs] = useState(null);
   const [currentMonth, setcurrentMonth] = useState('');
   const [currentYear, setcurrentYear] = useState('');
+  const [profileInfo, setProfileInfo] = useState(null);
 
   const loadWorkLogs = async (month, year) => {
     setcurrentMonth(month);
@@ -26,11 +27,20 @@ const HomePage = () => {
     setWorkLogs(daysData);
   };
 
+  const loadProfileInfo = async () => {
+    const data = await API.getBasicInfo();
+
+    if (data) {
+      setProfileInfo(data);
+    }
+  };
+
   useEffect(() => {
     const month = util.getFormatedMonth();
     const year = util.getFormatedYear();
 
     loadWorkLogs(month, year);
+    loadProfileInfo();
   }, []);
 
   return (
@@ -43,7 +53,7 @@ const HomePage = () => {
           loadWorkLogs={loadWorkLogs}
         />
         <RightSideContainer>
-          <ProfileCard />
+          <ProfileCard profile={profileInfo} />
           <HoursResumeCard workLogs={workLogs} />
         </RightSideContainer>
       </ContentContainer>

@@ -19,3 +19,14 @@ export const loadWorkSchedule = async (params) => {
     console.log(error);
   }
 };
+
+export const getBasicInfo = async () => {
+  try {
+    const { data } = await api.get('/basicInfo');
+
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+
+}

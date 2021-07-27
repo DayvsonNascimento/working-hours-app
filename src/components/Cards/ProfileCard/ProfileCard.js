@@ -1,11 +1,11 @@
 import { Container, Icon, Text } from './styles';
 
-const ProfileCard = () => {
+const ProfileCard = ({ profile }) => {
   return (
     <Container>
       <Icon />
-      <Text>Dayvson Weslley Cantalice do Nascimento </Text>
-      <Text>dayvsonwc@gmail.com</Text>
+      <Text>{profile?.fullName}</Text>
+      <Text>{profile?.email}</Text>
     </Container>
   );
 };
