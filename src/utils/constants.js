@@ -12,3 +12,5 @@ export const MONTHS = [
   'November',
   'December',
 ];
+
+export const EXPECTED_HOURS_DAY = 8;
