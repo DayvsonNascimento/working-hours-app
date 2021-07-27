@@ -1,6 +1,7 @@
 import LogCard from '../Cards/LogCard/LogCard';
-import { MONTHS } from '../../utils/constants';
 import * as API from '../../services/user/User';
+import { MONTHS } from '../../utils/constants';
+import { getMonthFullName } from '../../utils/utils';
 
 import {
   Container,
@@ -19,10 +20,6 @@ const LogTable = ({ workLogs, month, year, loadWorkLogs }) => {
     const selectedMonth = MONTHS.indexOf(event.target.value) + 1;
 
     loadWorkLogs(selectedMonth, year);
-  };
-
-  const getMonthFullName = () => {
-    return MONTHS[month - 1];
   };
 
   const submitWorkLog = async (date, workHours, lunchHours) => {

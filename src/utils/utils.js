@@ -1,3 +1,5 @@
+import { MONTHS } from './constants';
+
 export const isEmpty = (object) => {
   return Object.values(object).every((el) => el === '' || el === undefined);
 };
@@ -32,4 +34,8 @@ const getHoursrangeValue = (range) => {
 
 export const hasValidHoursRangeValues = (workedHours) => {
   return workedHours !== NaN && workedHours >= 0;
+};
+
+export const getMonthFullName = (month) => {
+  return MONTHS[month - 1];
 };

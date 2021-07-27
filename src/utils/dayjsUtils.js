@@ -6,9 +6,9 @@ export const getFormatedMonth = () => now.format('MM');
 
 export const getFormatedYear = () => now.format('YYYY');
 
-export const getCurrentDate = () => now.format('YYYYMMDD');
-
 export const getFormatedDate = (date) => date.format('YYYYMMDD');
+
+export const getCurrentDate = () => getFormatedDate(now);
 
 export const getDaysCurrentMonth = (month, year, data) => {
   const numberDaysCurrentMonth = dayjs(`${year}-${month}-01`).daysInMonth();

@@ -5,7 +5,7 @@ import { EXPECTED_HOURS_DAY } from '../../../utils/constants';
 
 import { Container, Text, Title } from './styles';
 
-const HoursResumeCard = ({ workLogs }) => {
+const HoursResumeCard = ({ workLogs, month }) => {
   const [workedHoursMonth, setWorkedHoursMonth] = useState(null);
   const [workedHoursDay, setWorkedHoursDay] = useState(null);
 
@@ -27,7 +27,7 @@ const HoursResumeCard = ({ workLogs }) => {
       (day) => dayjsUtil.getFormatedDate(day.date) === currentDay
     );
 
-    if (currentDayLog) {
+    if (currentDayLog?.length) {
       const workedHours = util.calculateTotalWorkedHours(
         currentDayLog[0].workHours,
         currentDayLog[0].lunchHours
@@ -58,7 +58,7 @@ const HoursResumeCard = ({ workLogs }) => {
         {getFormatedHour(workedHoursDay)} registered (
         {getPorcentage(workedHoursDay, EXPECTED_HOURS_DAY)}%)
       </Text>
-      <Title>At July</Title>
+      <Title>At {util.getMonthFullName(month)}</Title>
       <Text>168h expected</Text>
       <Text>
         {getFormatedHour(workedHoursMonth)} registered (

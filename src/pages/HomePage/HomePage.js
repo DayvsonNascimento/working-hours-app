@@ -54,7 +54,7 @@ const HomePage = () => {
         />
         <RightSideContainer>
           <ProfileCard profile={profileInfo} />
-          <HoursResumeCard workLogs={workLogs} />
+          <HoursResumeCard workLogs={workLogs} month={currentMonth}/>
         </RightSideContainer>
       </ContentContainer>
     </Container>
