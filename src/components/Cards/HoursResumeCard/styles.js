@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { CardContainer } from '../styles';
+import { CardContainer } from '../../../assets/styles/GlobaStyles';
 
 export const Container = styled(CardContainer)`
   padding: 15px 24px;

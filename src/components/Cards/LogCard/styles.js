@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { CustomErrorText } from '../../../assets/styles/GlobaStyles';
 
 export const Container = styled.tr`
   &:hover {
@@ -34,11 +35,7 @@ export const Button = styled.button`
   border: none;
 `;
 
-export const ErrorText = styled.div`
+export const ErrorText = styled(CustomErrorText)`
   margin-top: -7px;
-  font-size: 12px;
-  text-align: left;
-  color: #f02849;
-  margin-bottom: 2px;
   padding-left: 3px;
 `;

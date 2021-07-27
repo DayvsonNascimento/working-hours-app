@@ -43,3 +43,21 @@ export const PageContainer = styled.div`
   text-align: center;
   min-height: 100vh;
 `;
+
+export const CardContainer = styled.div`
+  background-color: #ffffff;
+  padding: 15px;
+  margin-bottom: 2rem;
+  box-shadow: 0 1px 1px 1px #e3e3e3;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+`;
+
+export const CustomErrorText = styled.div`
+  margin-top: 0;
+  font-size: 12px;
+  text-align: left;
+  color: #f02849;
+  margin-bottom: 2px;
+`;

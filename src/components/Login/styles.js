@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { CustomErrorText } from '../../assets/styles/GlobaStyles';
 
 export const Form = styled.form`
   background-color: #ffffff;
@@ -70,11 +71,6 @@ export const Link = styled.a`
   font-weight: 800;
 `;
 
-export const ErrorText = styled.div`
-  margin-top: 0px;
-  font-size: 12px;
+export const ErrorText = styled(CustomErrorText)`
   text-align: center;
-  color: #f02849;
-  margin-bottom: 2px;
-  padding-left: 3px;
 `;

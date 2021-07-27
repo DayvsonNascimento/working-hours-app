@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { CardContainer } from '../styles';
+import { CardContainer } from '../../../assets/styles/GlobaStyles';
 import { AiOutlineUser } from 'react-icons/ai';
 
 export const Container = styled(CardContainer)`
