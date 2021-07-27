@@ -39,7 +39,7 @@ const LogTable = ({ workLogs, month, year, loadWorkLogs }) => {
         <Select>
           <Option value="2021">2021</Option>
         </Select>
-        <Select value={getMonthFullName()} onChange={handleMonthChange}>
+        <Select value={getMonthFullName(month)} onChange={handleMonthChange}>
           {MONTHS.map((value, index) => (
             <Option key={index} value={value}>
               {value}
