@@ -72,6 +72,10 @@ export const Link = styled.a`
   font-weight: 800;
 `;
 
-export const ErroText = styled(CustomErrorText)`
+export const ErrorText = styled(CustomErrorText)`
   margin-top: -12px;
+`;
+
+export const ErrorSignUp = styled(CustomErrorText)`
+  text-align: center;
 `;

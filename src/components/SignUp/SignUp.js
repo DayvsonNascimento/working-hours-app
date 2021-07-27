@@ -9,7 +9,8 @@ import {
   Input,
   Button,
   Title,
-  ErroText,
+  ErrorText,
+  ErrorSignUp,
   LoginText,
   Link,
 } from './styles';
@@ -28,10 +29,11 @@ const SignUp = () => {
   const signUp = async () => {
     const response = await API.signUp(formValues);
 
-    if (response) {
+    if (!response.error) {
       handleLoginRedirect();
     }
     setHasSubmited(false);
+    setErrors({ ...errors, signUp: response.error });
   };
 
   const handleSubmit = async (event) => {
@@ -65,6 +67,7 @@ const SignUp = () => {
   return (
     <Form onSubmit={handleSubmit}>
       <Title>Create your account</Title>
+      <ErrorSignUp>{errors.signUp}</ErrorSignUp>
 
       <Label>Full name</Label>
       <Input
@@ -72,7 +75,7 @@ const SignUp = () => {
         value={formValues.fullName}
         onChange={(event) => handleChange(event, 'fullName')}
       ></Input>
-      <ErroText>{errors.fullName}</ErroText>
+      <ErrorText>{errors.fullName}</ErrorText>
 
       <Label>Email address</Label>
       <Input
@@ -80,7 +83,7 @@ const SignUp = () => {
         value={formValues.email}
         onChange={(event) => handleChange(event, 'email')}
       ></Input>
-      <ErroText>{errors.email}</ErroText>
+      <ErrorText>{errors.email}</ErrorText>
 
       <Label>Password</Label>
       <Input
@@ -88,7 +91,7 @@ const SignUp = () => {
         value={formValues.password}
         onChange={(event) => handleChange(event, 'password')}
       ></Input>
-      <ErroText>{errors.password}</ErroText>
+      <ErrorText>{errors.password}</ErrorText>
 
       <Label>Confirm password</Label>
       <Input
@@ -96,7 +99,7 @@ const SignUp = () => {
         value={formValues.confirmPassword}
         onChange={(event) => handleChange(event, 'confirmPassword')}
       ></Input>
-      <ErroText>{errors.confirmPassword}</ErroText>
+      <ErrorText>{errors.confirmPassword}</ErrorText>
 
       <Button type="submit" disabled={shouldDisableSubmit()}>
         Register

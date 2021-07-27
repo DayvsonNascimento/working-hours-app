@@ -21,9 +21,11 @@ const Login = () => {
     password: '',
   });
   const [loginError, setLoginError] = useState(null);
+  const [submitted, setHassubmitted] = useState(false);
 
   const handleLogin = async (event) => {
     event.preventDefault();
+    setHassubmitted(true);
 
     const response = await API.login(formValues);
 
@@ -31,7 +33,9 @@ const Login = () => {
       history.push('/');
       return history.go(0);
     }
+
     setLoginError(response.error);
+    setHassubmitted(false);
   };
 
   const handleSignUpRedirect = () => {
@@ -61,7 +65,7 @@ const Login = () => {
         onChange={(event) => handleChange(event, 'password')}
       ></Input>
 
-      <Button disabled={hasEmptyField(formValues)}>Log In</Button>
+      <Button disabled={hasEmptyField(formValues) || submitted}>Log In</Button>
       <SignUpText>
         Don't have an account?
         <Link onClick={handleSignUpRedirect}> Sign up here!</Link>

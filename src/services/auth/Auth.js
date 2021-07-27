@@ -7,7 +7,10 @@ export const signUp = async (body) => {
 
     return data;
   } catch (error) {
-    console.log(error);
+    const message =
+      error?.response?.data?.error || 'Could not sign up, please try again.';
+
+    return { error: message };
   }
 };
 
