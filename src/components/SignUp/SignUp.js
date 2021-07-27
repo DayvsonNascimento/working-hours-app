@@ -103,7 +103,7 @@ const SignUp = () => {
       </Button>
       <LoginText>
         Already have an account?
-        <Link onClick={handleLoginRedirect}> Login in here!</Link>
+        <Link onClick={handleLoginRedirect}> Log in here!</Link>
       </LoginText>
     </Form>
   );
