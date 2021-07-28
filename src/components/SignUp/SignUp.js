@@ -33,7 +33,7 @@ const SignUp = () => {
     const response = await API.signUp(formValues);
 
     if (!response.error) {
-      handleLoginRedirect();
+      return handleLoginRedirect();
     }
     setHasSubmited(false);
     setErrors({ ...errors, signUp: response.error });

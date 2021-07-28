@@ -39,22 +39,6 @@ describe('Login component should', () => {
     expect(screen.getByText(/Log in/i).closest('button')).toBeEnabled();
   });
 
-  it('try Login button when input is provided', () => {
-    render(<Login />);
-
-    const emailInput = screen.getAllByDisplayValue('')[0];
-    const passwordInput = screen.getAllByDisplayValue('')[1];
-
-    fireEvent.change(emailInput, {
-      target: { value: 'email' },
-    });
-    fireEvent.change(passwordInput, {
-      target: { value: 'password' },
-    });
-
-    expect(screen.getByText(/Log in/i).closest('button')).toBeEnabled();
-  });
-
   it('call API for Login request when login button is pressed', () => {
     const history = createMemoryHistory();
 
