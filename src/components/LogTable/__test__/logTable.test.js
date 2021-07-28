@@ -1,5 +1,4 @@
 import { render, screen } from '@testing-library/react';
-import * as API from '../../../services/user/User';
 import LogTable from '../LogTable';
 
 describe('LogTable component should', () => {
