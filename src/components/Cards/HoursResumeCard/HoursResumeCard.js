@@ -35,14 +35,13 @@ const HoursResumeCard = ({ workLogs, month }) => {
     );
     let workedHours = dayjsUtil.createDuration();
 
-    if (currentDayLog?.length) {
+    if (currentDayLog?.length && !util.isEmpty(currentDayLog[0].workHours)) {
       workedHours = dayjsUtil.calculateTotalWorkedHours(
         currentDayLog[0].workHours,
         currentDayLog[0].lunchHours
       );
-
-      setWorkedHoursDay(workedHours);
     }
+    setWorkedHoursDay(workedHours);
   };
 
   const getFormatedHour = (hour) => {

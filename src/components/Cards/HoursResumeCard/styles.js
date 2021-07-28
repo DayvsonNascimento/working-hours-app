@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { CardContainer } from '../../../assets/styles/GlobaStyles';
-import { AiOutlineFieldTime, AiOutlineClockCircle } from 'react-icons/ai';
+import { AiOutlineFieldTime } from 'react-icons/ai';
 
 export const Container = styled(CardContainer)`
   padding: 15px 24px;
