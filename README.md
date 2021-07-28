@@ -3,7 +3,7 @@ Web app to control the working hours for a company's employees.\
 The server used is a deployed Firebase app.
 
 ## Use
-In oder to use the app features, it's needed to Sign up on the app first.\
+In oder to use the app features, it's needed to Sign up on the app first.
 
 There is also default credentials to use the app:
 
