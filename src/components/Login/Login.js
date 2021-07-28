@@ -3,6 +3,8 @@ import { useHistory } from 'react-router-dom';
 import { hasEmptyField } from '../../utils/utils';
 import * as API from '../../services/auth/Auth';
 
+import { Spinner } from '../Spinner/styles';
+
 import {
   Form,
   Label,
@@ -66,7 +68,7 @@ const Login = () => {
       ></Input>
 
       <Button type="submit" disabled={hasEmptyField(formValues) || submitted}>
-        Log In
+        {submitted ? <Spinner /> : 'Log In'}
       </Button>
       <SignUpText>
         Don't have an account?

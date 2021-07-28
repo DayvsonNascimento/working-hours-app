@@ -3,6 +3,9 @@ import { useHistory } from 'react-router-dom';
 import { validate } from '../../utils/validators/signUpFormValidator';
 import * as util from '../../utils/utils';
 import * as API from '../../services/auth/Auth';
+
+import { Spinner } from '../Spinner/styles';
+
 import {
   Form,
   Label,
@@ -102,7 +105,7 @@ const SignUp = () => {
       <ErrorText>{errors.confirmPassword}</ErrorText>
 
       <Button type="submit" disabled={shouldDisableSubmit()}>
-        Register
+        {hasSubmitted ? <Spinner /> : 'Register'}
       </Button>
       <LoginText>
         Already have an account?

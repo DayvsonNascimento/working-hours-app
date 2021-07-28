@@ -6,7 +6,7 @@ import {
   EXPECTED_HOURS_MONTH,
 } from '../../../utils/constants';
 
-import { Container, Text, Title } from './styles';
+import { Container, TitleContainer, Text, Title, Icon } from './styles';
 
 const HoursResumeCard = ({ workLogs, month }) => {
   const [workedHoursMonth, setWorkedHoursMonth] = useState(null);
@@ -56,10 +56,17 @@ const HoursResumeCard = ({ workLogs, month }) => {
 
   return (
     <Container>
-      <Title>Today</Title>
+      <TitleContainer>
+        <Icon />
+        <Title>Today</Title>
+      </TitleContainer>
       <Text>{EXPECTED_HOURS_DAY}h expected</Text>
       <Text>{getFormatedHour(workedHoursDay)} registered</Text>
-      <Title>At {util.getMonthFullName(month)}</Title>
+
+      <TitleContainer>
+        <Icon />
+        <Title>At {util.getMonthFullName(month)}</Title>
+      </TitleContainer>
       <Text>{EXPECTED_HOURS_MONTH}h expected</Text>
       <Text>{getFormatedHour(workedHoursMonth)} registered</Text>
     </Container>

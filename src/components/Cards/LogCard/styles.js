@@ -33,6 +33,11 @@ export const Button = styled.button`
   color: white;
   padding: 8px;
   border: none;
+
+  &:disabled {
+    cursor: auto;
+    background-color: rgb(29, 161, 242, 0.5);
+  }
 `;
 
 export const ErrorText = styled(CustomErrorText)`

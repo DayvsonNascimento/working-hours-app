@@ -7,6 +7,9 @@ import {
   validateHoursRange,
 } from '../../../utils/validators/hoursInputValidator';
 
+import HourInput from '../../CustomInput/HourInput';
+import Spinner from '../../Spinner/Spinner';
+
 import {
   Container,
   RowCell,
@@ -15,7 +18,6 @@ import {
   ErrorText,
 } from './styles';
 
-import HourInput from '../../CustomInput/HourInput';
 
 const LogCard = ({ day, submitWorkLog }) => {
   const [hoursRangeWork, setHoursRangeWork] = useState({
@@ -27,8 +29,11 @@ const LogCard = ({ day, submitWorkLog }) => {
     end: '',
   });
   const [errors, setErrors] = useState({});
+  const [submitted, setSubmitted] = useState(false);
 
   const saveHoursRange = async () => {
+    setSubmitted(true);
+
     const errorHoursWork = validate(hoursRangeWork);
     const errorHoursLunch = validateOptinalField(hoursRangeLunch);
     const workedHoursSum = dayjsUtil.calculateTotalWorkedHours(
@@ -42,7 +47,7 @@ const LogCard = ({ day, submitWorkLog }) => {
       util.isEmpty(errorHoursLunch) &&
       util.isEmpty(errorValuesRange)
     ) {
-      submitWorkLog(
+      await submitWorkLog(
         day.date.format('YYYYMMDD'),
         hoursRangeWork,
         hoursRangeLunch
@@ -54,6 +59,7 @@ const LogCard = ({ day, submitWorkLog }) => {
       lunchHours: errorHoursLunch,
       range: errorValuesRange,
     });
+    setSubmitted(false);
   };
 
   const formatHour = () => {
@@ -61,7 +67,7 @@ const LogCard = ({ day, submitWorkLog }) => {
       hoursRangeWork,
       hoursRangeLunch
     );
-    const formatedHour = dayjsUtil.formatHour(workedHoursDay)
+    const formatedHour = dayjsUtil.formatHour(workedHoursDay);
 
     return formatedHour;
   };
@@ -100,7 +106,9 @@ const LogCard = ({ day, submitWorkLog }) => {
         {formatHour()}
         {!util.isEmpty(hoursRangeWork) ? (
           <ButtonContainer>
-            <Button onClick={saveHoursRange}>Save</Button>
+            <Button onClick={saveHoursRange} disabled={submitted}>
+              {submitted ? <Spinner /> : 'Save'}
+            </Button>
           </ButtonContainer>
         ) : null}
       </RowCell>
