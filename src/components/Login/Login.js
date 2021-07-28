@@ -65,7 +65,9 @@ const Login = () => {
         onChange={(event) => handleChange(event, 'password')}
       ></Input>
 
-      <Button disabled={hasEmptyField(formValues) || submitted}>Log In</Button>
+      <Button type="submit" disabled={hasEmptyField(formValues) || submitted}>
+        Log In
+      </Button>
       <SignUpText>
         Don't have an account?
         <Link onClick={handleSignUpRedirect}> Sign up here!</Link>

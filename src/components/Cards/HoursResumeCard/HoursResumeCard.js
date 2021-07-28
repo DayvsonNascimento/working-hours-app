@@ -33,9 +33,10 @@ const HoursResumeCard = ({ workLogs, month }) => {
     const currentDayLog = workLogs?.filter(
       (day) => dayjsUtil.getFormatedDate(day.date) === currentDay
     );
+    let workedHours = dayjsUtil.createDuration();
 
     if (currentDayLog?.length) {
-      const workedHours = dayjsUtil.calculateTotalWorkedHours(
+      workedHours = dayjsUtil.calculateTotalWorkedHours(
         currentDayLog[0].workHours,
         currentDayLog[0].lunchHours
       );
